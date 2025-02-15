@@ -17,6 +17,10 @@ public class TradingApp {
     //MODIFIES: this
     //EFFECTS: runs the trading application
     private void runTradingApp() {
-
+        //TODO
+    }
+    //EFFECTS: initializes set of available stocks for purchasing
+    public void initStockMarket() {
+        //TODO
     }
 }
