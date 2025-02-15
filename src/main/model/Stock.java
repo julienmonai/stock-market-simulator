@@ -1,14 +1,14 @@
 package model;
 
 public class Stock {
-    private int value;
+    private double value;
     private String name;
     private int shares;
     private int volatility; // 1 for low, 2 for moderate, 3 for high
 
-    public Stock(int volatility) {
-        value = 0;
-        name = "";
+    public Stock(String name, int volatility, double initialvalue) {
+        value = initialvalue;
+        this.name = name;
         shares = 0;
         this.volatility = volatility;
     }
@@ -28,7 +28,30 @@ public class Stock {
 
     //MODIFIES: this
     //EFFECTS: randomly changes the value of stock according to volativity level
+    //         if vol = 1, change per tick is +/- 2.5%
+    //         if vol = 2, change per tick is +/- 10%
+    //         if vol = 3, change per tick is +/- 20% 
     public void updateValue() {
         //TODO
+    }
+
+    public double getValue() {
+        //TODO
+        return 0.0;
+    }
+
+    public String getName() {
+        //TODO
+        return "";
+    }
+
+    public int getShares() {
+        //TODO
+        return 0;
+    }
+
+    public int getVolatility() {
+        //TODO
+        return 0;
     }
 }
