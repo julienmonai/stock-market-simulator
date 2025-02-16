@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Random;
+
 public class Stock {
     private double value;
     private String name;
@@ -16,14 +18,14 @@ public class Stock {
     //MODIFIES: this
     //EFFECTS: adds shares to this.shares
     public void buyShares(int shares) {
-        //TODO
+        this.shares+= shares;
     }
 
     //REQUIRES: shares > 0, shares < this.shares
     //MODIFIES: this
     //EFFECTS: subtracts shares from this.shares
     public void sellShares(int shares) {
-        //TODO
+        this.shares-= shares;
     }
 
     //MODIFIES: this
@@ -32,31 +34,46 @@ public class Stock {
     //         if vol = 2, change per tick is +/- 10%
     //         if vol = 3, change per tick is +/- 20% 
     public void updateValue() {
-        //TODO
+        Random rand = new Random();
+        Boolean addOrMinus = rand.nextBoolean();
+        double change;
+        
+        if (volatility == 1) {
+            change = (rand.nextDouble() * (0.025 * value));
+
+        } else {
+            if (volatility == 2) {
+               change = (rand.nextDouble() * (0.1 * value));
+           
+            } else {
+                change = (rand.nextDouble() * (0.2 * value));
+            }
+        }
+        if (addOrMinus) {
+            value += change;
+        } else {
+            value -= change;
+        }
     }
 
     public double getValue() {
-        //TODO
-        return 0.0;
+        return this.value;
     }
 
     //REQUIRES: newValue > 0
     public void setValue(double newValue) {
-        //TODO
+        value = newValue;
     }
 
     public String getName() {
-        //TODO
-        return "";
+        return this.name;
     }
 
     public int getShares() {
-        //TODO
-        return 0;
+        return this.shares;
     }
 
     public int getVolatility() {
-        //TODO
-        return 0;
+        return this.volatility;
     }
 }

@@ -5,6 +5,7 @@ package ui;
 import java.util.Scanner;
 
 import model.Portfolio;
+import model.Stock;
 
 //The UI for the trading application
 public class TradingApp {
@@ -16,6 +17,7 @@ public class TradingApp {
     }
     //MODIFIES: this
     //EFFECTS: runs the trading application
+    //templated off TellerApp
     private void runTradingApp() {
         //TODO
     }
