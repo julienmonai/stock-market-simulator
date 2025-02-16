@@ -10,10 +10,10 @@ import org.junit.jupiter.api.Test;
 
 
 public class TestStock {
-    Stock apple;
-    Stock micro;
-    Stock tsla;
-    Stock amd;
+    private Stock apple;
+    private Stock micro;
+    private Stock tsla;
+    private Stock amd;
 
     @BeforeEach
     void setUp() {
@@ -23,6 +23,15 @@ public class TestStock {
         amd = new Stock("amd", 2, 60);
     }
 
+    
+    @Test
+    void testConstructor() {
+        Stock testStock = new Stock("xyz", 2, 230);
+        assertEquals("xyz", testStock.getName());
+        assertEquals(2, testStock.getVolatility());
+        assertEquals(230, testStock.getValue(), 0.01);
+        
+    }
     @Test
     void testBuyShares() {
         assertEquals(0, apple.getShares());

@@ -40,6 +40,11 @@ public class Stock {
         return 0.0;
     }
 
+    //REQUIRES: newValue > 0
+    public void setValue(double newValue) {
+        //TODO
+    }
+
     public String getName() {
         //TODO
         return "";
