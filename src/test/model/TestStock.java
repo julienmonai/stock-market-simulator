@@ -32,6 +32,7 @@ public class TestStock {
         assertEquals(230, testStock.getValue(), 0.01);
         
     }
+    
     @Test
     void testBuyShares() {
         assertEquals(0, apple.getShares());

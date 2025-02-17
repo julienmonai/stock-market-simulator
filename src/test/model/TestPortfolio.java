@@ -126,7 +126,8 @@ public class TestPortfolio {
     //     //multiple shares, sell 1 share at increase
     //     portfolio.buyShares(50, tsla);
     //     portfolio.setAutoTrade(1, tsla, 450, "sell", 1);
-    //     tsla.setValue(500); // updateValue will do this to a random value therefore it is not guaranteed setAutoTrade will result in a trade
+    //     tsla.setValue(500); // updateValue will do this to a
+    // random value therefore it is not guaranteed setAutoTrade will result in a trade
     //     assertEquals(49, tsla.getShares());
     //     assertEquals(30500, portfolio.getFunds(), 0.01);
     //     portfolio.setAutoTrade(10, tsla, 550, "sell", 1);
@@ -144,7 +145,8 @@ public class TestPortfolio {
     //     //multiple shares, buy 1 share at decrease
     //     portfolio.buyShares(50, tsla);
     //     portfolio.setAutoTrade(1, tsla, 350, "buy", 1);
-    //     tsla.setValue(300); // updateValue will do this to a random value therefore it is not guaranteed setAutoTrade will result in a trade
+    //     tsla.setValue(300); // updateValue will do this to a random value therefore 
+    //     it is not guaranteed setAutoTrade will result in a trade
     //     assertEquals(51, tsla.getShares());
     //     assertEquals(29650, portfolio.getFunds(), 0.01);
     //     portfolio.setAutoTrade(10, tsla, 300, "buy", 1);

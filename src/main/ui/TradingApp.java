@@ -13,12 +13,14 @@ public class TradingApp {
     private Portfolio userPort;
     private Scanner input;
     private ArrayList<Stock> stockMarket = new ArrayList<Stock>();
+
     //EFFECTS: runs the trading application
     public TradingApp() {
         ArrayList<Stock> stockMarket = new ArrayList<Stock>();
         initStockMarket();
         runTradingApp();
     }
+
     //MODIFIES: this
     //EFFECTS: runs the trading application
     //templated off TellerApp
@@ -55,6 +57,7 @@ public class TradingApp {
         //}
         //System.out.println("Press c for ");
     }
+
     //EFFECTS: initializes set of available stocks for purchasing
     public void initStockMarket() {
         Stock apple = new Stock("apple", 1, 120);
@@ -83,6 +86,7 @@ public class TradingApp {
 
     // MODIFIES: this
     // EFFECTS: processes user command
+    @SuppressWarnings("methodlength")
     private void processCommand(String command) {
         Scanner scanner = new Scanner(System.in); // Scanner for user input
     
@@ -149,7 +153,7 @@ public class TradingApp {
         }
     }
     
-
+    //EFFECTS: returns the stock with stock.name matching name
     private Stock findStock(String name) {
         for (Stock stock : stockMarket) {
             if (name.equals(stock.getName())) {
@@ -159,6 +163,7 @@ public class TradingApp {
         return null;
     }
 
+    //EFFECTS: prints the stock name and shares and price of each stock in portfolio stocks
     private void printStocksAndShares() {
         for (Stock stock : userPort.getStocks()) {
             System.out.println(stock.getName() + "   shares: " + stock.getShares());
@@ -166,6 +171,7 @@ public class TradingApp {
         }
     }
 
+    //EFFECTS: prints stock names and shares and price of each stock in stock market
     private void printStocksAndSharesMarket() {
         for (Stock stock : stockMarket) {
             System.out.println(stock.getName() + "   shares: " + stock.getShares());
@@ -173,11 +179,13 @@ public class TradingApp {
         }
     }
 
+    //returns the ROI of portfolio as a percent
     private double currentReturn() {
         if (userPort.getTotalValue() < userPort.getInitialFunds()) {
             return -1 * (userPort.getTotalValue() / userPort.getInitialFunds());
         } else {
-            return userPort.getTotalValue() / userPort.getInitialFunds();}
+            return userPort.getTotalValue() / userPort.getInitialFunds();
+        }
     }
 
 }
