@@ -24,3 +24,10 @@ I want to be able to see the total value of my stock portfolio
 I want to be able to see the gain and loss percentage of my current investments
 
 I want to be able to set an automated buy/sell request when a stock hits a certain value
+
+## Phase 2 User Stories
+
+I want to be able to be prompted to save the current state of my portfolio and stock market to file
+
+
+I want to be prompted to continue from the file save or start a new portfolio when the application starts
