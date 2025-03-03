@@ -1,0 +1,18 @@
+{
+    "initialFunds": 10000.0,
+    "funds": 7500.0,
+    "stocks": [
+      {
+        "name": "apple",
+        "volatility": 1,
+        "value": 150.0,
+        "shares": 10
+      },
+      {
+        "name": "micro",
+        "volatility": 2,
+        "value": 248.0,
+        "shares": 5
+      }
+    ]
+  }
