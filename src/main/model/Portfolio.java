@@ -6,8 +6,8 @@ public class Portfolio {
     private double initialFunds;
     private double funds;
     private ArrayList<Stock> stocks;
-    private double totalValue;
-    private double currentValue;
+    //private double totalValue;
+    //private double currentValue;
 
     //REQUIRES: initialFunds > 0
     //EFFECTS:  constructs a portfolio with no funds and no stocks

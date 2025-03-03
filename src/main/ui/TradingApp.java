@@ -16,7 +16,7 @@ public class TradingApp {
 
     //EFFECTS: runs the trading application
     public TradingApp() {
-        ArrayList<Stock> stockMarket = new ArrayList<Stock>();
+        //ArrayList<Stock> stockMarket = new ArrayList<Stock>();
         initStockMarket();
         runTradingApp();
     }
