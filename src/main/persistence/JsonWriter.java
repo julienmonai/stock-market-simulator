@@ -1,4 +1,5 @@
 package persistence;
+
 import model.Portfolio;
 import model.Stock;
 

@@ -40,7 +40,7 @@ public class JsonReader {
     }
     
     // EFFECTS: reads portfolio from file and returns it;
-    public Portfolio readPortfolio() throws IOException{
+    public Portfolio readPortfolio() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
         return parsePortfolio(jsonObject);
