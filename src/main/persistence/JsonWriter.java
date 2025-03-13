@@ -2,6 +2,7 @@ package persistence;
 import model.Portfolio;
 import model.Stock;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 
@@ -21,26 +22,33 @@ public class JsonWriter {
 
     //MODIFIES: this
     //EFFECTS: opens writer
-    public void open() {
-
+    public void open() throws FileNotFoundException {
+        writer = new PrintWriter(new File(destination));
     }
 
     // MODIFIES: this
     // EFFECTS: writes JSON representation of portfolio to file
     public void writePortfolio(Portfolio port) {
-
+        JSONObject json = port.toJson();
+        saveToFile(json.toString(TAB));
     }
 
     // MODIFIES: this
-    // EFFECTS: writes JSON representation of portfolio to file
+    // EFFECTS: writes JSON representation of stockMarket to file
     public void writeStockMarket(ArrayList<Stock> stockMarket) {
-
+        JSONArray jsonArray = new JSONArray();
+        for (Stock stock : stockMarket) {
+            jsonArray.put(stock.toJson());
+        }
+        JSONObject json = new JSONObject();
+        json.put("stocks", jsonArray);
+        saveToFile(json.toString(TAB));
     }
 
     // MODIFIES: this
     // EFFECTS: closes writer
     public void close() {
-
+        writer.close();
     }
 
     // MODIFIES: this

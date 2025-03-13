@@ -1,4 +1,27 @@
-{
-    "stocks": []
-  }
-  
+{"stocks": [
+    {
+        "shares": 0,
+        "name": "apple",
+        "value": 120
+    },
+    {
+        "shares": 0,
+        "name": "micro",
+        "value": 250
+    },
+    {
+        "shares": 0,
+        "name": "tsla",
+        "value": 400
+    },
+    {
+        "shares": 0,
+        "name": "amd",
+        "value": 60
+    },
+    {
+        "shares": 0,
+        "name": "edr",
+        "value": 30
+    }
+]}

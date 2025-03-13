@@ -2,6 +2,9 @@ package model;
 
 import java.util.ArrayList;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 public class Portfolio {
     private double initialFunds;
     private double funds;
@@ -61,7 +64,7 @@ public class Portfolio {
     //REQUIRES: funds > 0 && funds < this.funds
     //MODIFIES: this
     //EFFECTS: removes funds from this.funds
-    public void withdrawFunds(int funds) {
+    public void withdrawFunds(double funds) {
         this.funds -= funds;
     }
 
@@ -91,4 +94,23 @@ public class Portfolio {
         return initialFunds;
     }
     
+    //EFFECTS: creates json data corresponding to the object and its fields
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("initialFunds", initialFunds);
+        json.put("funds", funds);
+        json.put("stocks", stocksToJson());
+        return json;
+    }
+
+    //EFFECTS: returns stocks in this portfolio as a json array
+    public JSONArray stocksToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Stock stock : stocks) {
+            jsonArray.put(stock.toJson());
+        }
+
+        return jsonArray;
+    }
 }

@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 import model.Portfolio;
 import model.Stock;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 //The UI for the trading application
 public class TradingApp {
@@ -82,6 +84,8 @@ public class TradingApp {
         System.out.println("\tv -> view portfolio");
         System.out.println("\tc -> complete day");
         System.out.println("\tq -> quit");
+        System.out.println("\tf -> save");
+        System.out.println("\tl -> load previous save");
     }
 
     // MODIFIES: this
@@ -146,8 +150,38 @@ public class TradingApp {
             for (Stock stock : stockMarket) {
                 stock.updateValue();
             }
-            
-    
+         
+        } else if (command.equals("f")) {
+            JsonWriter writer = new JsonWriter("./data/portfolio.Json");
+            try {
+                writer.open();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            writer.writePortfolio(userPort);
+            writer.close();
+            JsonWriter writer2 = new JsonWriter("./data/stockMarket.Json");
+            try {
+                writer2.open();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            writer2.writeStockMarket(stockMarket);
+            writer2.close();
+
+        } else if (command.equals("l")) {
+            JsonReader reader = new JsonReader("./data/portfolio.Json");
+            try {
+                userPort = reader.readPortfolio();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            JsonReader reader2 = new JsonReader("./data/stockMarket.Json");
+            try {
+                stockMarket = reader2.readStockMarket();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         } else {
             System.out.println("Selection not valid...");
         }

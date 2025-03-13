@@ -2,6 +2,8 @@ package model;
 
 import java.util.Random;
 
+import org.json.JSONObject;
+
 public class Stock {
     private double value;
     private String name;
@@ -75,5 +77,13 @@ public class Stock {
 
     public int getVolatility() {
         return this.volatility;
+    }
+
+    public JSONObject toJson() {
+    JSONObject json = new JSONObject();
+    json.put("name", this.name);
+    json.put("value", this.value);
+    json.put("shares", this.shares);
+    return json;
     }
 }

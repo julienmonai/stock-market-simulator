@@ -1,5 +1,21 @@
 {
-    "initialFunds": 0,
-    "funds": 0,
-    "stocks": []
-  }
+    "funds": 1969360,
+    "initialFunds": 2000000,
+    "stocks": [
+        {
+            "shares": 100,
+            "name": "edr",
+            "value": 201.5
+        },
+        {
+            "shares": 100,
+            "name": "tsla",
+            "value": 104.3
+        },
+        {
+            "shares": 1,
+            "name": "amd",
+            "value": 60
+        }
+    ]
+}

@@ -1,35 +1,32 @@
-{
-    "stocks": [
-      {
+{"stocks": [
+    {
+        "shares": 0,
         "name": "apple",
-        "volatility": 1,
-        "value": 120.0,
-        "shares": 0
-      },
-      {
+        "value": 119.7109460511176,
+        "volatility": 1
+    },
+    {
+        "shares": 0,
         "name": "micro",
-        "volatility": 2,
-        "value": 250.0,
-        "shares": 0
-      },
-      {
+        "value": 246.22988343931593,
+        "volatility": 2
+    },
+    {
+        "shares": 0,
         "name": "tsla",
-        "volatility": 3,
-        "value": 400.0,
-        "shares": 0
-      },
-      {
+        "value": 373.4439991048378,
+        "volatility": 3
+    },
+    {
+        "shares": 0,
         "name": "amd",
-        "volatility": 2,
-        "value": 60.0,
-        "shares": 0
-      },
-      {
+        "value": 71.75803605580255,
+        "volatility": 2
+    },
+    {
+        "shares": 3,
         "name": "edr",
-        "volatility": 2,
-        "value": 30.0,
-        "shares": 0
-      }
-    ]
-  }
-  
+        "value": 32.43894605956519,
+        "volatility": 2
+    }
+]}
