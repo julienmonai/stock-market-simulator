@@ -1,5 +1,5 @@
 {
-    "initialFunds": 100,
-    "funds": 100,
+    "initialFunds": 0,
+    "funds": 0,
     "stocks": []
   }

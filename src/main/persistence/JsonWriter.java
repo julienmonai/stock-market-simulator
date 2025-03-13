@@ -1,18 +1,21 @@
 package persistence;
 import model.Portfolio;
+import model.Stock;
+
 import org.json.JSONObject;
 
 
 import java.io.*;
+import java.util.ArrayList;
 
 // Represents a writer that writes JSON representation of portfolio to file
-public class JsonWriterPortfolio {
+public class JsonWriter {
     private static final int TAB = 4;
     private PrintWriter writer;
     private String destination;
 
     // EFFECTS: constructs writer to write to destination file
-    public JsonWriterPortfolio(String destination) {
+    public JsonWriter(String destination) {
         this.destination = destination;
     }
 
@@ -24,7 +27,13 @@ public class JsonWriterPortfolio {
 
     // MODIFIES: this
     // EFFECTS: writes JSON representation of portfolio to file
-    public void write(Portfolio port) {
+    public void writePortfolio(Portfolio port) {
+
+    }
+
+    // MODIFIES: this
+    // EFFECTS: writes JSON representation of portfolio to file
+    public void writeStockMarket(ArrayList<Stock> stockMarket) {
 
     }
 

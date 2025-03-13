@@ -1,35 +1,4 @@
 {
-    "stocks": [
-      {
-        "name": "apple",
-        "volatility": 1,
-        "value": 120.0,
-        "shares": 0
-      },
-      {
-        "name": "micro",
-        "volatility": 2,
-        "value": 250.0,
-        "shares": 0
-      },
-      {
-        "name": "tsla",
-        "volatility": 3,
-        "value": 400.0,
-        "shares": 0
-      },
-      {
-        "name": "amd",
-        "volatility": 2,
-        "value": 60.0,
-        "shares": 0
-      },
-      {
-        "name": "edr",
-        "volatility": 2,
-        "value": 30.0,
-        "shares": 0
-      }
-    ]
+    "stocks": []
   }
   
