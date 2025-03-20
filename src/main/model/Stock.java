@@ -82,6 +82,7 @@ public class Stock {
     public JSONObject toJson() {
     JSONObject json = new JSONObject();
     json.put("name", this.name);
+    json.put("volatility", this.volatility);
     json.put("value", this.value);
     json.put("shares", this.shares);
     return json;

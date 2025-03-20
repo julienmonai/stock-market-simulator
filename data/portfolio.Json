@@ -1,10 +1,10 @@
 {
-    "funds": 9910,
-    "initialFunds": 10000,
+    "funds": 94000,
+    "initialFunds": 100000,
     "stocks": [{
-        "shares": 3,
+        "shares": 100,
         "name": "edr",
-        "value": 32.43894605956519,
-        "volatility": 2
+        "volatility": 2,
+        "value": 30
     }]
 }
