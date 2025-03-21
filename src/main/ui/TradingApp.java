@@ -165,7 +165,7 @@ public class TradingApp {
                 writer2.open();
             } catch (Exception e) {
                 e.printStackTrace();
-            }
+            } 
             writer2.writeStockMarket(stockMarket);
             writer2.close();
 
@@ -217,6 +217,8 @@ public class TradingApp {
     private double currentReturn() {
         if (userPort.getTotalValue() < userPort.getInitialFunds()) {
             return -1 * (userPort.getTotalValue() / userPort.getInitialFunds());
+        } else if (userPort.getTotalValue() == userPort.getInitialFunds()) {
+            return 0.0;
         } else {
             return userPort.getTotalValue() / userPort.getInitialFunds();
         }
