@@ -213,6 +213,8 @@ public class TradingApp {
         }
     }
 
+        
+
     //returns the ROI of portfolio as a percent
     private double currentReturn() {
         if (userPort.getTotalValue() < userPort.getInitialFunds()) {
@@ -222,6 +224,28 @@ public class TradingApp {
         } else {
             return userPort.getTotalValue() / userPort.getInitialFunds();
         }
+    }
+
+      
+    public Portfolio getUserPortfolio() {
+        return this.userPort;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: sets the user's portfolio
+    public void setUserPortfolio(Portfolio portfolio) {
+        this.userPort = portfolio;
+    }
+
+    // EFFECTS: returns the stock market
+    public ArrayList<Stock> getStockMarket() {
+        return this.stockMarket;
+    }
+
+    // MODIFIES: this
+    // EFFECTS: sets the stock market
+    public void setStockMarket(ArrayList<Stock> stockMarket) {
+        this.stockMarket = stockMarket;
     }
 
 }
