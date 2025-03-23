@@ -24,6 +24,7 @@ public class TradingAppUI extends JFrame {
     private ArrayList<Stock> stockMarket;
     private Portfolio userPort;
 
+    // TradingApp GUI
     public TradingAppUI() {
         super("TradingApp Console");
         setSize(WIDTH, HEIGHT);
@@ -35,12 +36,6 @@ public class TradingAppUI extends JFrame {
         setVisible(true);
 
         initStockMarket();
-
-        //sidebar = new JTabbedPane();
-        //sidebar.setTabPlacement(JTabbedPane.LEFT);
-        //loadTabs();
-        //add(sidebar);
-        //setVisible(true);
     }
 
     // MODIFIES: this
@@ -62,46 +57,45 @@ public class TradingAppUI extends JFrame {
     // MODIFIES: this
     // EFFECTS: declares and loads all tabs into the sidebar
     private void loadTabs() {
-        // JPanel startingTab = new StartingTab(this);
-        // JPanel homeTab = new HomeTab(this);
-        // JPanel portfolioTab = new PortfolioTab(this);
-        // JPanel marketTab = new MarketTab(this);
-        
-        // sidebar.add(homeTab, HOME_TAB_INDEX);
-        // sidebar.setTitleAt(HOME_TAB_INDEX, "Home");
-        // sidebar.add(portfolioTab, PORTFOLIO_TAB_INDEX);
-        // sidebar.setTitleAt(PORTFOLIO_TAB_INDEX, "Portfolio");
-        // sidebar.add(marketTab, MARKET_TAB_INDEX);
-        // sidebar.setTitleAt(MARKET_TAB_INDEX, "Stock Market");
-
         sidebar = new JTabbedPane();
         sidebar.setTabPlacement(JTabbedPane.LEFT);
-        
         sidebar.addTab("Home", new HomeTab(this));
         sidebar.addTab("Portfolio", new PortfolioTab(this));
         sidebar.addTab("Stock Market", new MarketTab(this));
-
         add(sidebar, BorderLayout.CENTER);
     }
     
-    ////// EFFECTS: returns the trading app controlled by this UI
-    //public TradingApp getTradingApp() {
-        //return tradingApp;
-    //}
-    
-    // EFFECTS: returns the user portfolio
     public Portfolio getUserPort() {
         return userPort;
     }
+
+    public ArrayList<Stock> getStockMarket() {
+        return stockMarket;
+    }
     
-    // EFFECTS: returns the tabbed pane
     public JTabbedPane getTabbedPane() {
         return sidebar;
     }
 
+    //MODIFIES: this
+    //EFFECTS: sets userPort to given portfolio
     public void setUserPortfolio(Portfolio p) {
         userPort = p;
 
+    }
+
+    //MODIFIES: this
+    //EFFECTS: sets stock market to given stock market
+    public void setStockMarket(ArrayList<Stock> sm) {
+        stockMarket = sm;
+    }
+
+    //MODIFIES: this
+    //EFFECTS: updates stock values
+    public void completeDay() {
+        for (Stock stock : stockMarket) {
+            stock.updateValue();
+        }
     }
 
     //MODIFIES: this

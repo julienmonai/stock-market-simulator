@@ -23,7 +23,7 @@ public class StartingTab extends Tab implements ActionListener{
     private double funds;
     private Portfolio userPort;
     
-
+    // the tab that is displayed when you start the program, prompts for funds
     public StartingTab(TradingAppUI controller) {
         super(controller);
         
@@ -51,19 +51,11 @@ public class StartingTab extends Tab implements ActionListener{
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        // JLabel pictureLabel = new JLabel(new ImageIcon(picture));
-        // inputField = new JTextField(10);
-        // confirmButton = new JButton("confirm");
-        // confirmButton.setActionCommand("confirm");
-        // confirmButton.addActionListener(this);
-
-        // inputPanel.add(fundsLabel);
-        // inputPanel.add(inputField);
-        // inputPanel.add(confirmButton);  
-
-        // add(inputPanel, BorderLayout.CENTER);
     }
 
+    //MODIFIES: this
+    //EFFECTS: if actionEvent is the confirmButton being pressed, make a new portfolio using inputted funds
+    //         and switch UI to the sidebar tabs
     public void actionPerformed(ActionEvent e) {
         if ("confirm".equals(e.getActionCommand())) {
             double funds = Double.parseDouble(inputField.getText());

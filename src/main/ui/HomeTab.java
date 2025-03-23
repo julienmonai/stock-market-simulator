@@ -1,5 +1,7 @@
 package ui;
 
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,6 +11,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import model.Portfolio;
+import persistence.JsonReader;
+import persistence.JsonWriter;
+
 public class HomeTab extends Tab implements ActionListener{
     private JFrame frame;
     private JPanel panel;
@@ -16,20 +22,81 @@ public class HomeTab extends Tab implements ActionListener{
     private JTextField textField;
     private JButton button;
     
+    // creates a home tab consisting of buttons complete day, load, save, and quit
     public HomeTab(TradingAppUI controller) {
         super(controller);
-        initialize();
-    }
+        JButton completeButton = new JButton("complete day");
+        completeButton.setActionCommand("complete day");
+        completeButton.addActionListener(this);
+        JButton loadButton = new JButton("load save");
+        loadButton.setActionCommand("load save");
+        loadButton.addActionListener(this);
+        JButton quitButton = new JButton("quit");
+        quitButton.setActionCommand("quit");
+        quitButton.addActionListener(this);
+        JButton saveButton = new JButton("save");
+        saveButton.setActionCommand("save");
+        saveButton.addActionListener(this);
+        setLayout(new BorderLayout());
 
-    private void initialize() {
-        frame = new JFrame();
-        frame.setTitle("Enter Starting Funds: ");
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-       // frame.setSize
-    }
+        JPanel centerPanel =  new JPanel();
+        centerPanel.add(completeButton);
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
+        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
+        bottomPanel.add(saveButton);
+        bottomPanel.add(loadButton);
+
+        JPanel topPanel = new JPanel(new BorderLayout());
+        JPanel topRightPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        topRightPanel.add(quitButton);
+        topPanel.add(topRightPanel, BorderLayout.EAST);
+
+        add(topPanel, BorderLayout.NORTH);
+        add(centerPanel, BorderLayout.CENTER);
+        add(bottomPanel, BorderLayout.SOUTH);
         
+    }
+
+    //MODIFIES: this
+    //EFFECTS: manages inputs, if save button is pressed, write JSon data
+    //                         if load button is pressed, read JSon data
+    //                         if complete day button is pressed, update stock values
+    //                         if quit is pressed, exit program
+    public void actionPerformed(ActionEvent e) {
+        if ("save".equals(e.getActionCommand())) {
+            JsonWriter writer = new JsonWriter("./data/portfolio.Json");
+            try {
+                writer.open();
+            } catch (Exception a) {
+                a.printStackTrace();
+            }
+            writer.writePortfolio(this.getController().getUserPort());
+            writer.close();
+            JsonWriter writer2 = new JsonWriter("./data/stockMarket.Json");
+            try {
+                writer2.open();
+            } catch (Exception a) {
+                a.printStackTrace();
+            } 
+            writer2.writeStockMarket(this.getController().getStockMarket());
+            writer2.close();
+        } else if ("load save".equals(e.getActionCommand())) {
+            JsonReader reader = new JsonReader("./data/portfolio.Json");
+            try {
+                this.getController().setUserPortfolio(reader.readPortfolio());
+            } catch (Exception a) {
+                a.printStackTrace();
+            }
+            JsonReader reader2 = new JsonReader("./data/stockMarket.Json");
+            try {
+                this.getController().setStockMarket(reader2.readStockMarket());
+            } catch (Exception a) {
+                a.printStackTrace();
+            }
+        } else if ("complete day".equals(e.getActionCommand())) {
+            this.getController().completeDay();
+        } else if ("quit".equals(e.getActionCommand())) {
+            System.exit(0);
+        }
     }
 }

@@ -8,7 +8,7 @@ public abstract class Tab extends JPanel {
     private final TradingAppUI controller;
     private JFrame frame;
 
-    //REQUIRES: SmartHomeUI controller that holds this tab
+    //REQUIRES: TradingAppUI controller that holds this tab
     public Tab(TradingAppUI controller) {
         this.controller = controller;
     }
@@ -24,7 +24,7 @@ public abstract class Tab extends JPanel {
         return p;
     }
 
-    //EFFECTS: returns the SmartHomeUI controller for this tab
+    //EFFECTS: returns the TradingAppUI controller for this tab
     public TradingAppUI getController() {
         return controller;
     }
