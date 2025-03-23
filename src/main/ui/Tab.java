@@ -6,11 +6,14 @@ import java.awt.*;
 public abstract class Tab extends JPanel {
 
     private final TradingAppUI controller;
+    private JFrame frame;
 
     //REQUIRES: SmartHomeUI controller that holds this tab
     public Tab(TradingAppUI controller) {
         this.controller = controller;
     }
+
+     
 
     //EFFECTS: creates and returns row with button included
     public JPanel formatButtonRow(JButton b) {
