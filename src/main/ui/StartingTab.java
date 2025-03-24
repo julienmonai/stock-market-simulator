@@ -33,7 +33,7 @@ public class StartingTab extends Tab implements ActionListener{
         JLabel fundsLabel = new JLabel("Enter starting amount: $");
         BufferedImage picture;
         try {
-            //picture = ImageIO.read(getClass().getResource("/images/stockExchange.jpg"));
+            
             picture = ImageIO.read(new File("src/main/ui/images/stockExchange.jpg"));
             JLabel pictureLabel = new JLabel(new ImageIcon(picture));
             inputField = new JTextField(10);

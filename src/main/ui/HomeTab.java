@@ -95,6 +95,8 @@ public class HomeTab extends Tab implements ActionListener{
             }
         } else if ("complete day".equals(e.getActionCommand())) {
             this.getController().completeDay();
+            this.getController().getMarketTab().updateDisplay();
+            this.getController().getPortTab().updateDisplay();
         } else if ("quit".equals(e.getActionCommand())) {
             System.exit(0);
         }

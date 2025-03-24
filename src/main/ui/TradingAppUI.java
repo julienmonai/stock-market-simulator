@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.WindowConstants;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
 
 import model.Portfolio;
 import model.Stock;
@@ -23,6 +25,8 @@ public class TradingAppUI extends JFrame {
     private JTabbedPane sidebar;
     private ArrayList<Stock> stockMarket;
     private Portfolio userPort;
+    private PortfolioTab portTab;
+    private MarketTab marketTab;
 
     // TradingApp GUI
     public TradingAppUI() {
@@ -60,13 +64,35 @@ public class TradingAppUI extends JFrame {
         sidebar = new JTabbedPane();
         sidebar.setTabPlacement(JTabbedPane.LEFT);
         sidebar.addTab("Home", new HomeTab(this));
-        sidebar.addTab("Portfolio", new PortfolioTab(this));
-        sidebar.addTab("Stock Market", new MarketTab(this));
+        portTab = new PortfolioTab(this);
+        sidebar.addTab("Portfolio", portTab);
+        marketTab = new MarketTab(this);
+        sidebar.addTab("Stock Market", marketTab);
         add(sidebar, BorderLayout.CENTER);
+
+        sidebar.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                JTabbedPane source = (JTabbedPane)e.getSource();
+                int selectedIndex = source.getSelectedIndex();
+                if (selectedIndex == PORTFOLIO_TAB_INDEX) {
+                    portTab.updateDisplay();
+                } else if (selectedIndex == MARKET_TAB_INDEX) {
+                    marketTab.updateDisplay();
+                }
+            }
+        });
     }
     
     public Portfolio getUserPort() {
         return userPort;
+    }
+
+    public PortfolioTab getPortTab() {
+        return portTab;
+    }
+
+    public MarketTab getMarketTab() {
+        return marketTab;
     }
 
     public ArrayList<Stock> getStockMarket() {
@@ -96,6 +122,8 @@ public class TradingAppUI extends JFrame {
         for (Stock stock : stockMarket) {
             stock.updateValue();
         }
+        portTab.updateDisplay();
+        marketTab.updateDisplay();
     }
 
     //MODIFIES: this
