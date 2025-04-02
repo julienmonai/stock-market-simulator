@@ -20,7 +20,7 @@ public class TradingAppUI extends JFrame {
     public static final int MARKET_TAB_INDEX = 2;
 
     public static final int WIDTH = 600;
-    public static final int HEIGHT = 400;
+    public static final int HEIGHT = 500;
 
     private JTabbedPane sidebar;
     private ArrayList<Stock> stockMarket;
@@ -34,11 +34,8 @@ public class TradingAppUI extends JFrame {
         setSize(WIDTH, HEIGHT);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
-
         add(new StartingTab(this), BorderLayout.CENTER);
-
         setVisible(true);
-
         initStockMarket();
     }
 
@@ -103,21 +100,17 @@ public class TradingAppUI extends JFrame {
         return sidebar;
     }
 
-    //MODIFIES: this
-    //EFFECTS: sets userPort to given portfolio
     public void setUserPortfolio(Portfolio p) {
         userPort = p;
 
     }
 
-    //MODIFIES: this
-    //EFFECTS: sets stock market to given stock market
     public void setStockMarket(ArrayList<Stock> sm) {
         stockMarket = sm;
     }
 
     //MODIFIES: this
-    //EFFECTS: updates stock values
+    //EFFECTS: updates stock values and updates tables in portfoliotab and markettab
     public void completeDay() {
         for (Stock stock : stockMarket) {
             stock.updateValue();

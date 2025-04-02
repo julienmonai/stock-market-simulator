@@ -1,10 +1,10 @@
 {
-    "funds": 94000,
-    "initialFunds": 100000,
+    "funds": 89640,
+    "initialFunds": 90000,
     "stocks": [{
-        "shares": 100,
-        "name": "edr",
+        "shares": 6,
+        "name": "amd",
         "volatility": 2,
-        "value": 30
+        "value": 55.56301723937376
     }]
 }

@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.ImageIcon;
 
-public class StartingTab extends Tab implements ActionListener{
+public class StartingTab extends Tab implements ActionListener {
     private JTextField inputField;
     private JButton confirmButton;
     private double funds;

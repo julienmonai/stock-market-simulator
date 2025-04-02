@@ -15,46 +15,51 @@ import model.Portfolio;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
-public class HomeTab extends Tab implements ActionListener{
+public class HomeTab extends Tab implements ActionListener {
     private JFrame frame;
     private JPanel panel;
     private JLabel label;
     private JTextField textField;
     private JButton button;
+    private JButton completeButton;
+    private JButton loadButton;
+    private JButton quitButton;
+    private JButton saveButton;
     
     // creates a home tab consisting of buttons complete day, load, save, and quit
     public HomeTab(TradingAppUI controller) {
         super(controller);
-        JButton completeButton = new JButton("complete day");
-        completeButton.setActionCommand("complete day");
-        completeButton.addActionListener(this);
-        JButton loadButton = new JButton("load save");
-        loadButton.setActionCommand("load save");
-        loadButton.addActionListener(this);
-        JButton quitButton = new JButton("quit");
-        quitButton.setActionCommand("quit");
-        quitButton.addActionListener(this);
-        JButton saveButton = new JButton("save");
-        saveButton.setActionCommand("save");
-        saveButton.addActionListener(this);
+        createButtons();
         setLayout(new BorderLayout());
-
         JPanel centerPanel =  new JPanel();
         centerPanel.add(completeButton);
-
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
         bottomPanel.add(saveButton);
         bottomPanel.add(loadButton);
-
         JPanel topPanel = new JPanel(new BorderLayout());
         JPanel topRightPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         topRightPanel.add(quitButton);
         topPanel.add(topRightPanel, BorderLayout.EAST);
-
         add(topPanel, BorderLayout.NORTH);
         add(centerPanel, BorderLayout.CENTER);
         add(bottomPanel, BorderLayout.SOUTH);
         
+    }
+
+    //EFFECTS: initialize buttons for homeTab
+    private void createButtons() {
+        completeButton = new JButton("complete day");
+        completeButton.setActionCommand("complete day");
+        completeButton.addActionListener(this);
+        loadButton = new JButton("load save");
+        loadButton.setActionCommand("load save");
+        loadButton.addActionListener(this);
+        quitButton = new JButton("quit");
+        quitButton.setActionCommand("quit");
+        quitButton.addActionListener(this);
+        saveButton = new JButton("save");
+        saveButton.setActionCommand("save");
+        saveButton.addActionListener(this);
     }
 
     //MODIFIES: this
@@ -62,6 +67,8 @@ public class HomeTab extends Tab implements ActionListener{
     //                         if load button is pressed, read JSon data
     //                         if complete day button is pressed, update stock values
     //                         if quit is pressed, exit program
+    @Override
+    @SuppressWarnings("methodlength")
     public void actionPerformed(ActionEvent e) {
         if ("save".equals(e.getActionCommand())) {
             JsonWriter writer = new JsonWriter("./data/portfolio.Json");

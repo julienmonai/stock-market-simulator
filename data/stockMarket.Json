@@ -3,30 +3,30 @@
         "shares": 0,
         "name": "apple",
         "volatility": 1,
-        "value": 120
+        "value": 117.45567470007612
     },
     {
         "shares": 0,
         "name": "micro",
         "volatility": 2,
-        "value": 250
+        "value": 278.5858967492862
     },
     {
         "shares": 0,
         "name": "tsla",
         "volatility": 3,
-        "value": 400
+        "value": 305.9209432384438
+    },
+    {
+        "shares": 6,
+        "name": "amd",
+        "volatility": 2,
+        "value": 55.56301723937376
     },
     {
         "shares": 0,
-        "name": "amd",
-        "volatility": 2,
-        "value": 60
-    },
-    {
-        "shares": 100,
         "name": "edr",
         "volatility": 2,
-        "value": 30
+        "value": 30.050625246679463
     }
 ]}

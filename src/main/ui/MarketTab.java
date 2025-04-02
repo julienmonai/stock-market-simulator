@@ -16,45 +16,42 @@ public class MarketTab extends Tab implements ActionListener {
     private JButton buyButton;
     private JLabel fundsLabel;
     
+    // the tab displaying the information of the stock market
     public MarketTab(TradingAppUI controller) {
         super(controller);
         setLayout(new BorderLayout());
         
-        // Create funds info panel
         JPanel infoPanel = createInfoPanel();
         add(infoPanel, BorderLayout.NORTH);
-        
-        // Create table panel
         JPanel tablePanel = createTablePanel();
         add(tablePanel, BorderLayout.CENTER);
-        
-        // Create control panel
         JPanel controlPanel = createControlPanel();
         add(controlPanel, BorderLayout.SOUTH);
         
-        // Update display
         updateDisplay();
     }
     
+    //MODIFIES: this
+    //EFFECTS: initializes the JPanel that displays the portfolio funds
     private JPanel createInfoPanel() {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         panel.setBorder(BorderFactory.createTitledBorder("Your Funds"));
         
         fundsLabel = new JLabel("Available Funds: $0.00");
         panel.add(fundsLabel);
-        
         return panel;
     }
     
+    //MODIFIES: this
+    //EFFECTS: initializes the JPanel that holds the table displaying the stocks in stockmarket
     private JPanel createTablePanel() {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBorder(BorderFactory.createTitledBorder("Stock Market"));
         
-        // Create table model with column names
         tableModel = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
-                return false; // Make table non-editable
+                return false; 
             }
         };
         
@@ -62,7 +59,6 @@ public class MarketTab extends Tab implements ActionListener {
         tableModel.addColumn("Value per Share");
         tableModel.addColumn("Owned Shares");
         
-        // Create table with the model
         marketTable = new JTable(tableModel);
         JScrollPane scrollPane = new JScrollPane(marketTable);
         panel.add(scrollPane, BorderLayout.CENTER);
@@ -70,6 +66,8 @@ public class MarketTab extends Tab implements ActionListener {
         return panel;
     }
     
+    //MODIFIES: this
+    //EFFECTS: initializes the JPanel with the button to buy stocks and textfield for # of stocks to buy
     private JPanel createControlPanel() {
         JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         panel.setBorder(BorderFactory.createTitledBorder("Buy Stocks"));
@@ -85,23 +83,24 @@ public class MarketTab extends Tab implements ActionListener {
         return panel;
     }
     
-    // Updates the display with current market information
+    //MODIFIES: this
+    //EFFECTS: updates the values in the stock market table, and the funds 
     public void updateDisplay() {
         fundsLabel.setText(String.format("Available Funds: $%.2f", getController().getUserPort().getFunds()));
         tableModel.setRowCount(0);
         
-        // Populate table with market stocks
         ArrayList<Stock> stockMarket = getController().getStockMarket();
-            for (Stock stock : stockMarket) {
-                //int sharesText = stock.getShares();
-                
-                tableModel.addRow(new Object[]{
-                    stock.getName(),
-                    String.format("$%.2f", stock.getValue()), stock.getShares()});
-            }
+        for (Stock stock : stockMarket) {
+            tableModel.addRow(new Object[]{
+                        stock.getName(),
+                        String.format("$%.2f", stock.getValue()), stock.getShares()});
+        }
     }
     
     @Override
+    @SuppressWarnings("methodlength")
+    //MODIFIES: this
+    //EFFECTS: if action is buyButton, buy the selected stock and # of stocks, and updates tab
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == buyButton) {
             int selectedRow = marketTable.getSelectedRow();            
@@ -109,8 +108,7 @@ public class MarketTab extends Tab implements ActionListener {
 
                 
             String stockName = (String) tableModel.getValueAt(selectedRow, 0);
-                
-            // Find the stock to buy
+            
             ArrayList<Stock> marketStocks = getController().getStockMarket();
             Stock stockToBuy = null;
             for (Stock stock : marketStocks) {
@@ -124,25 +122,20 @@ public class MarketTab extends Tab implements ActionListener {
                 JOptionPane.showMessageDialog(this, "Stock not found", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-                
-            // Check if user has enough funds
+        
             double cost = shares * stockToBuy.getValue();
             if (cost > getController().getUserPort().getFunds()) {
-                JOptionPane.showMessageDialog(this, "Not enough funds to buy these shares", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Insufficient funds", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-                
-            // Buy the stock
-            getController().getUserPort().buyShares(shares, stockToBuy);
-                
-            // Update the display
-            updateDisplay();
-            // Clear the shares field
-            sharesField.setText("");
             
-            // Update portfolio tab if visible
+            getController().getUserPort().buyShares(shares, stockToBuy);
+            updateDisplay();
+            sharesField.setText("");
+
             if (getController().getTabbedPane().getSelectedIndex() == TradingAppUI.PORTFOLIO_TAB_INDEX) {
-                ((PortfolioTab) this.getController().getPortTab().getController().getTabbedPane().getComponentAt(TradingAppUI.PORTFOLIO_TAB_INDEX)).updateDisplay();
+                int tab = TradingAppUI.PORTFOLIO_TAB_INDEX;
+                ((PortfolioTab) this.getController().getTabbedPane().getComponentAt(tab)).updateDisplay();
             }
         }
     }
