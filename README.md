@@ -1,33 +1,90 @@
-# My Personal Project
+# Stock Trading Simulator
 
-## A subtitle
+A Java Swing desktop application for simulating stock market trading with portfolio management and ROI tracking.
 
-A *bulleted* list:
-- item 1
-- item 2
-- item 3
+![Starting Screen](screenshots/start-screen.png)
 
-An example of text with **bold** and *italic* fonts.
+## Overview
 
-# **Stock Manager Simulator**
+Virtual stock trading platform with dynamic price simulation, portfolio analytics, and an basic GUI. Built to demonstrate OOP principles, data persistence, and Swing competency.
 
-The application I have in mind is a stock portfolio manager/ market simulator. The application will allow you to 'purchase' and manage different stocks with changing values. it will also have a graphical interface allowing you to see the changes in value using graphs potentially. With added functionality(being able to get real-time data from the internet), my application could be used to *teach* someone how to invest in the stock market. This project is interesting to me because I think it would be a good learning experience and I like to lose money in the stock market.
+## Key Features
+
+### Portfolio Management & Analytics
+![Portfolio View](screenshots/portfolio-view.png)
+
+- ROI calculation
+- Sortable stock tables (by shares or value)
+- Total portfolio value visualization
+- Buy/sell transactions
+
+### Live Stock Market
+![Stock Market](screenshots/stock-market.png)
+
+- Dynamic price updates with configurable volatility (±2.5%, ±10%, ±20%)
+- Fund tracking
+- Stock selection interface
+
+### Price Simulation After Trading
+![After Market Changes](screenshots/after-trading.png)
+
+Market values update dynamically, showing basic price fluctuations based on stock volatility levels.
+
+## Technical Stack
+
+**Core Technologies:**
+- Java SE (Swing GUI)
+- JSON for data persistence
+- Custom TableRowSorter with comparators
+
+**Key Components:**
+```
+model/
+├── Stock.java          # Stock entity with volatility simulation
+└── Portfolio.java      # Portfolio management & ROI calculations
+
+ui/
+├── TradingAppUI.java   # Main controller & tab orchestration
+├── PortfolioTab.java   # Portfolio view with sorting
+└── MarketTab.java      # Market view with buying logic
+```
+
+## Technical Highlights
+
+- **Custom Sorting**: Implemented TableRowSorter with custom comparators for currency-formatted values
+- **State Synchronization**: Real-time tab updates using ChangeListener pattern
+- **Input Validation**: Comprehensive error handling for all user transactions
+- **Event-Driven Design**: ActionListener-based interaction model
+- **Algorithm Design**: Random volatility simulation with configurable risk levels
 
 
-## User Stories
-I want to be able to add and remove shares of stocks, stocks, and add/withdraw funds to my portfolio
+## Feature Showcase
 
-I want to be able to view a list of my stocks with their current values atached
+| Initial Setup | Empty Portfolio | Active Trading |
+|--------------|-----------------|----------------|
+| ![Setup](screenshots/start-screen.png) | ![Empty Portfolio](screenshots/empty-portfolio.png) | ![Market View](screenshots/stock-market.png) |
 
-I want to be able to see the total value of my stock portfolio
+### Home Screen Features
+![Home Screen](screenshots/home-screen.png)
 
-I want to be able to see the gain and loss percentage of my current investments
+- Save/Load portfolio functionality
+- "Complete Day" for market simulation
+- Clean, minimal interface
 
-I want to be able to set an automated buy/sell request when a stock hits a certain value
+## Skills Demonstrated
 
-## Phase 2 User Stories
+- Object-Oriented Programming & Design Patterns (MVC)
+- Java Swing GUI Development
+- Event-Driven Architecture
+- Data Structures (ArrayList, custom comparators)
+- Algorithm Implementation (ROI, volatility simulation)
+- State Management across components
+- Input validation & error handling
 
-I want to be able to be prompted to save the current state of my portfolio and stock market to file
+## Future Enhancements
 
+- Historical price charting
+- Advanced order types (limit, stop-loss)
+- Portfolio diversification metrics
 
-I want to be prompted to continue from the file save or start a new portfolio when the application starts
+---
